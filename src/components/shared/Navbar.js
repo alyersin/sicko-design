@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import {
   Box,
   Flex,
@@ -15,7 +16,6 @@ import {
   DrawerCloseButton,
   useDisclosure,
   VStack,
-  useBreakpointValue,
 } from "@chakra-ui/react";
 // HamburgerIcon component (temporary until @chakra-ui/icons is installed)
 const HamburgerIcon = ({ ...props }) => (
@@ -34,8 +34,26 @@ import { NAV_ITEMS } from "../../constants/app";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const isMobile = useBreakpointValue({ base: true, md: false });
+  const pathname = usePathname();
+  const router = useRouter();
+
+  useEffect(() => {
+    setMounted(true);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Check on mount
+    checkMobile();
+    
+    // Listen for resize
+    window.addEventListener("resize", checkMobile);
+    
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,19 +64,39 @@ export default function Navbar() {
   }, []);
 
   const handleNavClick = (e, href) => {
-    // Don't prevent default for full page routes
-    if (href.startsWith("/") && !href.startsWith("#")) {
-      return; // Let Next.js handle the navigation
-    }
-    e.preventDefault();
     onClose();
+    
+    // Handle full page routes (like /calculator)
+    if (href.startsWith("/") && !href.startsWith("#")) {
+      router.push(href);
+      return;
+    }
+    
+    e.preventDefault();
+    
+    // Handle hash links
     if (href === "/" || href === "#home") {
-      // Scroll to top for home
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      // If not on home page, navigate first
+      if (pathname !== "/") {
+        router.push("/");
+        // Wait for navigation then scroll
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 200);
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
     } else if (href.startsWith("#")) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      // If not on home page, navigate to home first with hash
+      if (pathname !== "/") {
+        // Use window.location for proper hash handling
+        window.location.href = `/${href}`;
+      } else {
+        // Already on home page, just scroll
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
       }
     }
   };
@@ -87,7 +125,38 @@ export default function Navbar() {
         >
           <Logo isMobile={isMobile} />
           
-          {isMobile ? (
+          {!mounted ? (
+            // Show desktop menu during SSR to prevent hydration mismatch
+            <HStack spacing={8}>
+              {NAV_ITEMS.map((item) => (
+                <Link
+                  key={item.id}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  color="text.primary"
+                  fontWeight="500"
+                  fontSize="0.95rem"
+                  position="relative"
+                  _after={{
+                    content: '""',
+                    position: "absolute",
+                    bottom: "-4px",
+                    left: 0,
+                    width: "0",
+                    height: "2px",
+                    bg: "brand.500",
+                    transition: "width 0.3s ease",
+                  }}
+                  _hover={{
+                    color: "brand.500",
+                    _after: { width: "100%" },
+                  }}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </HStack>
+          ) : isMobile ? (
             <IconButton
               icon={<HamburgerIcon />}
               variant="ghost"
