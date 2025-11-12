@@ -1,8 +1,65 @@
 "use client";
 
 import { Box, Container, VStack, Heading, Text, HStack, Button } from "@chakra-ui/react";
+import { keyframes } from "@emotion/react";
 import { ROUTES } from "../../constants/routes";
 import { useSmoothNavigation } from "../../hooks/useSmoothNavigation";
+
+const zoomInFromDepth = keyframes`
+  0% {
+    transform: translate(-50%, -50%) scale(0.25);
+    opacity: 0;
+    filter: blur(14px);
+  }
+  60% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+`;
+
+const quakeImpact = keyframes`
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate3d(6px, -4px, 0) rotate(0.4deg);
+  }
+  40% {
+    transform: translate3d(-6px, 4px, 0) rotate(-0.4deg);
+  }
+  60% {
+    transform: translate3d(4px, 3px, 0) rotate(0.2deg);
+  }
+  80% {
+    transform: translate3d(-4px, -3px, 0) rotate(-0.2deg);
+  }
+`;
+
+const slideOutLeft = keyframes`
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-120%, 0, 0);
+    opacity: 0;
+  }
+`;
+
+const fadeInVideo = keyframes`
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+`;
 
 export default function Hero() {
   const navigate = useSmoothNavigation();
@@ -13,7 +70,8 @@ export default function Hero() {
       as="section"
       id="home"
       position="relative"
-      minH="100vh"
+      minH={{ base: "auto", md: "90vh" }}
+      py={{ base: 8, md: 0 }}
       display="flex"
       alignItems="center"
       justifyContent="center"
@@ -30,7 +88,77 @@ export default function Hero() {
         bottom={0}
         bg="rgba(0, 0, 0, 0.4)"
       />
-      <Container maxW="1200px" position="relative" zIndex={2}>
+      <Box
+        position="absolute"
+        inset={0}
+        zIndex={1}
+        pointerEvents="none"
+        overflow="hidden"
+        aria-hidden="true"
+      >
+        <Box
+          position="absolute"
+          top="50%"
+          left="50%"
+          width={{ base: "90vw", md: "90vw", lg: "90vw" }}
+          maxW="1500px"
+          height={{ base: "40vh", md: "68vh", lg: "85vh" }}
+          borderRadius="2xl"
+          transform="translate(-50%, -50%) scale(0.25)"
+          opacity={0}
+          animation={`${zoomInFromDepth} 2.4s cubic-bezier(0.22, 1, 0.36, 1) forwards`}
+          boxShadow="0 60px 160px rgba(0, 0, 0, 0.45)"
+          overflow="hidden"
+        >
+          <Box
+            position="absolute"
+            inset={0}
+            borderRadius="inherit"
+            backgroundImage="url('/assets/sicko-design.jpg')"
+            backgroundSize="cover"
+            backgroundPosition="center"
+            backgroundRepeat="no-repeat"
+            filter="contrast(1.05) saturate(1.1)"
+            sx={{
+              animation: `${quakeImpact} 0.4s ease-in-out 3, ${slideOutLeft} 0.9s ease-in forwards`,
+              animationDelay: "2.4s, 4.8s",
+              animationFillMode: "both, forwards",
+            }}
+          />
+          <Box
+            position="absolute"
+            inset={0}
+            borderRadius="inherit"
+            bgGradient="linear(to-b, rgba(0,0,0,0.75), rgba(0,0,0,0.35))"
+            pointerEvents="none"
+          />
+        </Box>
+        <Box
+          position="absolute"
+          top="50%"
+          left="50%"
+          width={{ base: "90vw", md: "90vw", lg: "90vw" }}
+          maxW="1500px"
+          height={{ base: "40vh", md: "68vh", lg: "85vh" }}
+          borderRadius="2xl"
+          transform="translate(-50%, -50%)"
+          opacity={0}
+          overflow="hidden"
+          sx={{
+            animation: `${fadeInVideo} 0.8s ease-out forwards`,
+            animationDelay: "5.3s",
+          }}
+        >
+          {/* Replace with actual video embed */}
+          <Box width="100%" height="100%" bg="black" />
+        </Box>
+      </Box>
+      <Container
+        maxW="1200px"
+        position="relative"
+        zIndex={3}
+        pt={{ base: 6, md: 0 }}
+      >
         <VStack spacing={8} textAlign="center" color="white">
           <Heading
             size="2xl"
@@ -64,39 +192,7 @@ export default function Hero() {
           </HStack>
         </VStack>
       </Container>
-      <Box
-        position="absolute"
-        bottom={8}
-        left="50%"
-        transform="translateX(-50%)"
-        zIndex={2}
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        gap={2}
-        color="rgba(255, 255, 255, 0.7)"
-        fontSize="0.875rem"
-      >
-        <Text>Scroll</Text>
-        <Box
-          width="2px"
-          height="30px"
-          bg="rgba(255, 255, 255, 0.5)"
-          position="relative"
-        >
-          <Box
-            position="absolute"
-            bottom={0}
-            left="-4px"
-            width="10px"
-            height="10px"
-            borderRight="2px solid rgba(255, 255, 255, 0.5)"
-            borderBottom="2px solid rgba(255, 255, 255, 0.5)"
-            transform="rotate(45deg)"
-          />
-        </Box>
-      </Box>
+      {/* Scroll indicator intentionally removed */}
     </Box>
   );
 }
-
