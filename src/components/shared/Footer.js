@@ -1,8 +1,8 @@
-"use client";
-
 import { Box, Container, VStack, HStack, Text, Link } from "@chakra-ui/react";
+import NextLink from "next/link";
+import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 import Logo from "./Logo";
-import { SOCIAL_LINKS } from "../../constants/app";
+import { SOCIAL_LINKS } from "../../constants/social";
 
 export default function Footer() {
   return (
@@ -18,18 +18,63 @@ export default function Footer() {
           >
             Detailing auto profesional în Constanța. Transformăm mașinile tale în opere de artă.
           </Text>
-          <HStack spacing={8}>
-            {SOCIAL_LINKS.map((social) => (
-              <Link
-                key={social.id}
-                href={social.href}
-                color="rgba(255, 255, 255, 0.7)"
-                _hover={{ color: "silver.400" }}
-                transition="color 0.3s ease"
-              >
-                {social.label}
-              </Link>
-            ))}
+          <HStack spacing={6}>
+            <Link
+              href="https://www.facebook.com/profile.php?id=100083218658083"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="#1877F2"
+              _hover={{ color: "#99C2FF" }}
+              transition="color 0.3s ease"
+            >
+              <FaFacebook size={28} />
+            </Link>
+            <Link
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="#E1306C"
+              _hover={{ color: "#FF8AB4" }}
+              transition="color 0.3s ease"
+            >
+              <FaInstagram size={28} />
+            </Link>
+            <Link
+              href="https://www.tiktok.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="#25F4EE"
+              _hover={{ color: "#A5FFF7" }}
+              transition="color 0.3s ease"
+            >
+              <FaTiktok size={28} />
+            </Link>
+          </HStack>
+          <HStack spacing={6} flexWrap="wrap" justify="center">
+            <Link
+              as={NextLink}
+              href="/termeni-si-conditii"
+              color="rgba(255, 255, 255, 0.7)"
+              _hover={{ color: "silver.400" }}
+            >
+              Termeni și Condiții
+            </Link>
+            <Link
+              as={NextLink}
+              href="/politica-confidentialitate"
+              color="rgba(255, 255, 255, 0.7)"
+              _hover={{ color: "silver.400" }}
+            >
+              Politica de Confidențialitate
+            </Link>
+            <Link
+              as={NextLink}
+              href="/harta-site"
+              color="rgba(255, 255, 255, 0.7)"
+              _hover={{ color: "silver.400" }}
+            >
+              Hartă Site
+            </Link>
           </HStack>
           <Box
             pt={8}

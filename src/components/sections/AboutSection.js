@@ -1,8 +1,6 @@
-"use client";
-
 import { Box, Container, VStack, Heading, Text, SimpleGrid, Grid } from "@chakra-ui/react";
 import StatCard from "../shared/StatCard";
-import { STATS } from "../../constants/app";
+import { STATS } from "../../constants/stats";
 
 export default function AboutSection() {
   return (

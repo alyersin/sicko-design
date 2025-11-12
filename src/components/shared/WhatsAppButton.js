@@ -1,7 +1,7 @@
 "use client";
 
 import { IconButton, Tooltip } from "@chakra-ui/react";
-import { CONTACT_INFO } from "../../constants/app";
+import { CONTACT_INFO } from "../../constants/contact";
 
 export default function WhatsAppButton() {
   // Format: +40732893053 (Romania country code +40, then number without leading 0)

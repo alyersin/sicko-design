@@ -1,7 +1,5 @@
-"use client";
-
 import { Box } from "@chakra-ui/react";
-import Navbar from "../components/shared/Navbar";
+import Header from "../components/shared/Header";
 import Hero from "../components/shared/Hero";
 import AboutSection from "../components/sections/AboutSection";
 import ServicesSection from "../components/sections/ServicesSection";
@@ -14,11 +12,12 @@ import ContactSection from "../components/sections/ContactSection";
 import MapSection from "../components/sections/MapSection";
 import Footer from "../components/shared/Footer";
 import WhatsAppButton from "../components/shared/WhatsAppButton";
+import GDPRConsent from "../components/shared/GDPRConsent";
 
 export default function Home() {
   return (
     <Box minH="100vh" bg="bg.body">
-      <Navbar />
+      <Header />
       <Box pt={20}>
         <Hero />
         <AboutSection />
@@ -32,6 +31,7 @@ export default function Home() {
         <MapSection />
         <Footer />
         <WhatsAppButton />
+        <GDPRConsent />
       </Box>
     </Box>
   );

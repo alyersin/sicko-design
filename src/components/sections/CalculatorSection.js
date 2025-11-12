@@ -1,7 +1,5 @@
-"use client";
-
 import { Box, Container, VStack, Heading, Text, Grid } from "@chakra-ui/react";
-import PriceCalculator from "../shared/PriceCalculator";
+import PriceCalculator from "../calculator/PriceCalculator";
 
 export default function CalculatorSection() {
   return (

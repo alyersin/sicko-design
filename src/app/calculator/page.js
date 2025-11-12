@@ -2,8 +2,8 @@
 
 import { Box, Container, VStack, Heading, Text, Button, HStack, Icon } from "@chakra-ui/react";
 import Link from "next/link";
-import PriceCalculator from "../../components/shared/PriceCalculator";
-import Navbar from "../../components/shared/Navbar";
+import PriceCalculator from "../../components/calculator/PriceCalculator";
+import Header from "../../components/shared/Header";
 import Footer from "../../components/shared/Footer";
 import { CalculatorIcon, ZapIcon, DiamondIcon, TargetIcon, InfoIcon, ClipboardIcon, SearchIcon, MessageIcon, GiftIcon, PhoneIcon } from "../../components/icons";
 
@@ -34,7 +34,7 @@ export default function CalculatorPage() {
         filter="blur(80px)"
       />
 
-      <Navbar />
+      <Header />
       <Box pt={24} pb={20} position="relative" zIndex={1}>
         <Container maxW="1000px">
           <VStack spacing={12}>

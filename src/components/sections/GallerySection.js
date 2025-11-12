@@ -18,7 +18,7 @@ import {
   useDisclosure,
   Image,
 } from "@chakra-ui/react";
-import { GALLERY_ITEMS_COUNT, GALLERY_FILTERS } from "../../constants/app";
+import { GALLERY_ITEMS_COUNT, GALLERY_FILTERS } from "../../constants/gallery";
 
 export default function GallerySection() {
   const [selectedFilter, setSelectedFilter] = useState("all");

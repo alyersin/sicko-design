@@ -1,5 +1,3 @@
-"use client";
-
 import { Card, CardBody, VStack, Heading, Text, List, ListItem, ListIcon } from "@chakra-ui/react";
 
 export default function ServiceCard({ service }) {

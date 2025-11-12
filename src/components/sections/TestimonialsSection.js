@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Box, Container, VStack, Heading, Text, HStack, IconButton, Flex } from "@chakra-ui/react";
 import TestimonialCard from "../shared/TestimonialCard";
-import { TESTIMONIALS } from "../../constants/app";
+import { TESTIMONIALS } from "../../constants/testimonials";
 
 // Arrow icons
 const LeftArrow = ({ ...props }) => (

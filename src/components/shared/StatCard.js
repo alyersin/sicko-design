@@ -1,5 +1,3 @@
-"use client";
-
 import { Card, CardBody, VStack, Text } from "@chakra-ui/react";
 
 export default function StatCard({ stat }) {

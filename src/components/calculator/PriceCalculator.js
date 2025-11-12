@@ -18,7 +18,8 @@ import {
   Icon,
   Flex,
 } from "@chakra-ui/react";
-import { VEHICLE_TYPES, SERVICE_PRICES, SERVICES } from "../../constants/app";
+import { VEHICLE_TYPES, SERVICE_PRICES } from "../../constants/calculator";
+import { SERVICES } from "../../constants/services";
 import { CalculatorIcon, CarIcon, SparkleIcon, ShieldIcon, WrenchIcon, DiamondIcon, VanIcon, SendIcon, RefreshIcon } from "../icons";
 
 export default function PriceCalculator() {

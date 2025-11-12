@@ -1,18 +1,12 @@
 "use client";
 
 import { Box, Container, VStack, Heading, Text, HStack, Button } from "@chakra-ui/react";
-import { ROUTES } from "../../constants/app";
+import { ROUTES } from "../../constants/routes";
+import { useSmoothNavigation } from "../../hooks/useSmoothNavigation";
 
 export default function Hero() {
-  const handleNavClick = (e, href) => {
-    e.preventDefault();
-    if (href.startsWith("#")) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }
-  };
+  const navigate = useSmoothNavigation();
+  const createNavHandler = (href) => (event) => navigate(event, href);
 
   return (
     <Box
@@ -56,14 +50,14 @@ export default function Hero() {
             <Button
               size="lg"
               colorScheme="brand"
-              onClick={(e) => handleNavClick(e, ROUTES.contact)}
+              onClick={createNavHandler(ROUTES.contact)}
             >
               Rezervă Acum
             </Button>
             <Button
               size="lg"
               variant="hero"
-              onClick={(e) => handleNavClick(e, ROUTES.services)}
+              onClick={createNavHandler(ROUTES.services)}
             >
               Serviciile Noastre
             </Button>

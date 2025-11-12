@@ -16,7 +16,8 @@ import {
   Button,
   Select,
 } from "@chakra-ui/react";
-import { CONTACT_INFO, FORM_PLACEHOLDERS, SERVICES } from "../../constants/app";
+import { CONTACT_INFO, FORM_PLACEHOLDERS } from "../../constants/contact";
+import { SERVICES } from "../../constants/services";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({

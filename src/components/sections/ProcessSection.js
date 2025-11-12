@@ -1,7 +1,5 @@
-"use client";
-
 import { Box, Container, VStack, Heading, Text, SimpleGrid, HStack } from "@chakra-ui/react";
-import { PROCESS_STEPS } from "../../constants/app";
+import { PROCESS_STEPS } from "../../constants/process";
 
 export default function ProcessSection() {
   return (

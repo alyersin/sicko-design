@@ -1,8 +1,6 @@
-"use client";
-
 import { Box, Container, VStack, Heading, Text, Accordion } from "@chakra-ui/react";
 import FAQItem from "../shared/FAQItem";
-import { FAQ_ITEMS } from "../../constants/app";
+import { FAQ_ITEMS } from "../../constants/faq";
 
 export default function FAQSection() {
   return (

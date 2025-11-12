@@ -4,7 +4,7 @@ import { Box, Container, VStack, Heading, Text } from "@chakra-ui/react";
 
 export default function MapSection() {
   return (
-    <Box as="section" py={20} bg="bg.surface">
+    <Box as="section" id="map" py={20} bg="bg.surface">
       <Container maxW="1200px">
         <VStack spacing={8}>
           <VStack spacing={4}>

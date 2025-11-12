@@ -1,8 +1,6 @@
-"use client";
-
 import { Box, Container, VStack, Heading, Text, SimpleGrid } from "@chakra-ui/react";
 import ServiceCard from "../shared/ServiceCard";
-import { SERVICES } from "../../constants/app";
+import { SERVICES } from "../../constants/services";
 
 export default function ServicesSection() {
   return (
