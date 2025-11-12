@@ -18,16 +18,24 @@ export default function AboutSection() {
           <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={16} alignItems="center">
             <VStack spacing={6} align="flex-start">
               <Heading size="lg" color="brand.500">
-                Pasiune pentru Detalii
+                Sicko Design - Excelență în Fiecare Detaliu
               </Heading>
               <Text fontSize="1.0625rem" lineHeight="1.8" color="text.secondary">
-                La Sicko Design, transformăm fiecare mașină într-o operă de artă. Cu ani de experiență 
-                în industria auto detailing, echipa noastră aduce perfecțiune în fiecare detaliu.
+                Suntem o echipă tânără și dinamică din Constanța, pasionată de arta auto detailing. 
+                La Sicko Design, nu doar curățăm mașini - le readucem strălucirea și protecția pe care 
+                o merită. Fiecare proiect este o oportunitate de a demonstra că atenția la detalii 
+                face diferența între un serviciu bun și unul excepțional.
               </Text>
               <Text fontSize="1.0625rem" lineHeight="1.8" color="text.secondary">
-                Folosim doar produse premium și tehnici avansate pentru a oferi rezultate de excepție. 
-                De la spălare exterior până la protecție ceramică, fiecare serviciu este executat cu 
-                precizie și dedicare.
+                Ne specializăm în tehnici moderne de detailing, folosind echipamente profesionale și 
+                produse de ultimă generație. Indiferent dacă ai nevoie de o spălare rapidă sau de un 
+                pachet complet de protecție ceramică, abordăm fiecare lucrare cu același nivel de 
+                seriozitate și profesionalism. Mașina ta nu este doar un vehicul - este o investiție 
+                pe care o protejăm cu măiestrie.
+              </Text>
+              <Text fontSize="1.0625rem" lineHeight="1.8" color="text.secondary" fontWeight="500">
+                Venim la tine sau poți aduce mașina la noi. Flexibilitatea și satisfacția clientului 
+                sunt prioritățile noastre principale.
               </Text>
             </VStack>
             

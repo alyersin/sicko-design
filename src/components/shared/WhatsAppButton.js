@@ -4,7 +4,8 @@ import { IconButton, Tooltip } from "@chakra-ui/react";
 import { CONTACT_INFO } from "../../constants/app";
 
 export default function WhatsAppButton() {
-  const phoneNumber = CONTACT_INFO.phone.value.replace(/\s/g, "").replace(/\+/g, "");
+  // Format: +40732893053 (Romania country code +40, then number without leading 0)
+  const phoneNumber = CONTACT_INFO.phone.value.replace(/\s/g, "");
   const whatsappUrl = `https://wa.me/${phoneNumber}`;
 
   return (

@@ -169,7 +169,7 @@ export const CONTACT_INFO = {
   },
   phone: {
     label: "Telefon",
-    value: "+40 XXX XXX XXX",
+    value: "+40 732 893 053",
     icon: "📞",
   },
   email: {
