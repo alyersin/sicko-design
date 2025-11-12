@@ -35,13 +35,13 @@ export default function CalculatorPage() {
       />
 
       <Header />
-      <Box pt={24} pb={20} position="relative" zIndex={1}>
-        <Container maxW="1000px">
-          <VStack spacing={12}>
+      <Box pt={{ base: 16, md: 24 }} pb={{ base: 12, md: 20 }} position="relative" zIndex={1}>
+        <Container maxW="1000px" px={{ base: 4, md: 6 }}>
+          <VStack spacing={{ base: 8, md: 12 }}>
             {/* Header Section */}
-            <VStack spacing={6} textAlign="center" maxW="700px" mx="auto">
+            <VStack spacing={{ base: 4, md: 6 }} textAlign="center" maxW="700px" mx="auto">
               <Box
-                p={4}
+                p={{ base: 3, md: 4 }}
                 bgGradient="linear(135deg, brand.400, brand.600)"
                 borderRadius="2xl"
                 boxShadow="0 8px 30px rgba(0, 102, 204, 0.3)"
@@ -50,66 +50,75 @@ export default function CalculatorPage() {
                 justifyContent="center"
                 mb={4}
               >
-                <Icon as={CalculatorIcon} w={16} h={16} color="white" />
+                <Icon as={CalculatorIcon} w={{ base: 12, md: 16 }} h={{ base: 12, md: 16 }} color="white" />
               </Box>
               <Heading
-                size="2xl"
+                fontSize={{ base: "2.25rem", md: "3rem" }}
                 bgGradient="linear(135deg, brand.600, brand.500)"
                 bgClip="text"
                 fontWeight="800"
                 letterSpacing="-0.02em"
+                lineHeight="1.1"
               >
                 Calculator Preț Detailing
               </Heading>
-              <Text fontSize="xl" color="text.secondary" lineHeight="1.8" fontWeight="500">
+              <Text
+                fontSize={{ base: "md", md: "xl" }}
+                color="text.secondary"
+                lineHeight={{ base: "1.6", md: "1.8" }}
+                fontWeight="500"
+              >
                 Obține instant o estimare precisă pentru serviciile de detailing auto. 
                 Selectează tipul de vehicul și serviciile dorite pentru a calcula prețul total.
               </Text>
-              <HStack spacing={4} pt={4}>
+              <HStack spacing={4} pt={4} flexWrap="wrap" justify="center" width="100%">
                 <Box
-                  px={4}
-                  py={2}
+                  px={{ base: 3, md: 4 }}
+                  py={{ base: 2, md: 2 }}
                   bg="white"
                   borderRadius="full"
                   border="2px solid"
                   borderColor="brand.200"
                   boxShadow="0 2px 10px rgba(0, 102, 204, 0.1)"
+                  minW={{ base: "100%", sm: "auto" }}
                 >
                   <HStack spacing={2}>
                     <Icon as={ZapIcon} w={4} h={4} color="brand.600" />
-                    <Text fontSize="sm" fontWeight="600" color="brand.600">
+                    <Text fontSize="sm" fontWeight="600" color="brand.600" textAlign="center">
                       Calcul Rapid
                     </Text>
                   </HStack>
                 </Box>
                 <Box
-                  px={4}
-                  py={2}
+                  px={{ base: 3, md: 4 }}
+                  py={{ base: 2, md: 2 }}
                   bg="white"
                   borderRadius="full"
                   border="2px solid"
                   borderColor="brand.200"
                   boxShadow="0 2px 10px rgba(0, 102, 204, 0.1)"
+                  minW={{ base: "100%", sm: "auto" }}
                 >
                   <HStack spacing={2}>
                     <Icon as={DiamondIcon} w={4} h={4} color="brand.600" />
-                    <Text fontSize="sm" fontWeight="600" color="brand.600">
+                    <Text fontSize="sm" fontWeight="600" color="brand.600" textAlign="center">
                       Prețuri Transparente
                     </Text>
                   </HStack>
                 </Box>
                 <Box
-                  px={4}
-                  py={2}
+                  px={{ base: 3, md: 4 }}
+                  py={{ base: 2, md: 2 }}
                   bg="white"
                   borderRadius="full"
                   border="2px solid"
                   borderColor="brand.200"
                   boxShadow="0 2px 10px rgba(0, 102, 204, 0.1)"
+                  minW={{ base: "100%", sm: "auto" }}
                 >
                   <HStack spacing={2}>
                     <Icon as={TargetIcon} w={4} h={4} color="brand.600" />
-                    <Text fontSize="sm" fontWeight="600" color="brand.600">
+                    <Text fontSize="sm" fontWeight="600" color="brand.600" textAlign="center">
                       Estimare Precisă
                     </Text>
                   </HStack>
@@ -124,7 +133,7 @@ export default function CalculatorPage() {
 
             {/* Additional Info Section */}
             <Box
-              p={8}
+              p={{ base: 5, md: 8 }}
               bg="white"
               borderRadius="2xl"
               boxShadow="0 4px 20px rgba(0, 0, 0, 0.08)"
@@ -134,31 +143,31 @@ export default function CalculatorPage() {
             >
               <VStack spacing={4} align="flex-start">
                 <HStack spacing={2}>
-                  <Icon as={InfoIcon} w={6} h={6} color="brand.500" />
-                  <Heading size="md" color="text.primary">
+                  <Icon as={InfoIcon} w={{ base: 5, md: 6 }} h={{ base: 5, md: 6 }} color="brand.500" />
+                  <Heading fontSize={{ base: "lg", md: "md" }} color="text.primary">
                     Informații Importante
                   </Heading>
                 </HStack>
-                <VStack spacing={3} align="flex-start" color="text.secondary">
-                  <HStack spacing={3} align="flex-start">
+                <VStack spacing={3} align="flex-start" color="text.secondary" fontSize={{ base: "sm", md: "md" }}>
+                  <HStack spacing={3} align="flex-start" width="100%">
                     <Icon as={ClipboardIcon} w={5} h={5} color="brand.500" mt={1} flexShrink={0} />
                     <Text>
                       Prețurile afișate sunt <strong>estimative</strong> și pot varia în funcție de starea actuală a vehiculului.
                     </Text>
                   </HStack>
-                  <HStack spacing={3} align="flex-start">
+                  <HStack spacing={3} align="flex-start" width="100%">
                     <Icon as={SearchIcon} w={5} h={5} color="brand.500" mt={1} flexShrink={0} />
                     <Text>
                       Pentru o <strong>evaluare precisă</strong>, recomandăm o consultare la fața locului.
                     </Text>
                   </HStack>
-                  <HStack spacing={3} align="flex-start">
+                  <HStack spacing={3} align="flex-start" width="100%">
                     <Icon as={MessageIcon} w={5} h={5} color="brand.500" mt={1} flexShrink={0} />
                     <Text>
                       După calcularea prețului, poți <strong>solicita o ofertă</strong> și te vom contacta în cel mai scurt timp.
                     </Text>
                   </HStack>
-                  <HStack spacing={3} align="flex-start">
+                  <HStack spacing={3} align="flex-start" width="100%">
                     <Icon as={GiftIcon} w={5} h={5} color="brand.500" mt={1} flexShrink={0} />
                     <Text>
                       Oferim <strong>pachete speciale</strong> pentru combinații de servicii multiple.
@@ -170,15 +179,15 @@ export default function CalculatorPage() {
 
             {/* CTA Section */}
             <VStack spacing={4}>
-              <Text fontSize="lg" color="text.secondary" fontWeight="500">
+              <Text fontSize={{ base: "md", md: "lg" }} color="text.secondary" fontWeight="500" textAlign="center">
                 Ai întrebări sau preferi să discutăm direct?
               </Text>
-              <HStack spacing={4}>
+              <HStack spacing={4} flexWrap="wrap" justify="center" width="100%">
                 <Button
                   as={Link}
                   href="/#contact"
                   colorScheme="brand"
-                  size="lg"
+                  size={{ base: "md", md: "lg" }}
                   bgGradient="linear(to-r, brand.500, brand.600)"
                   boxShadow="0 4px 15px rgba(0, 102, 204, 0.4)"
                   _hover={{
@@ -197,7 +206,7 @@ export default function CalculatorPage() {
                   as={Link}
                   href="/#services"
                   variant="outline"
-                  size="lg"
+                  size={{ base: "md", md: "lg" }}
                   borderWidth="2px"
                   _hover={{
                     bg: "brand.50",

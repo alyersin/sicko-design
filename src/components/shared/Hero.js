@@ -70,8 +70,8 @@ export default function Hero() {
       as="section"
       id="home"
       position="relative"
-      minH={{ base: "auto", md: "90vh" }}
-      py={{ base: 8, md: 0 }}
+      minH={{ base: "70vh", md: "90vh" }}
+      py={{ base: 3, md: 0 }}
       display="flex"
       alignItems="center"
       justifyContent="center"
@@ -100,9 +100,9 @@ export default function Hero() {
           position="absolute"
           top="50%"
           left="50%"
-          width={{ base: "90vw", md: "90vw", lg: "90vw" }}
+          width={{ base: "95vw", md: "90vw", lg: "90vw" }}
           maxW="1500px"
-          height={{ base: "40vh", md: "68vh", lg: "85vh" }}
+          height={{ base: "55vh", md: "68vh", lg: "85vh" }}
           borderRadius="2xl"
           transform="translate(-50%, -50%) scale(0.25)"
           opacity={0}
@@ -137,9 +137,9 @@ export default function Hero() {
           position="absolute"
           top="50%"
           left="50%"
-          width={{ base: "90vw", md: "90vw", lg: "90vw" }}
+          width={{ base: "95vw", md: "90vw", lg: "90vw" }}
           maxW="1500px"
-          height={{ base: "40vh", md: "68vh", lg: "85vh" }}
+          height={{ base: "55vh", md: "68vh", lg: "85vh" }}
           borderRadius="2xl"
           transform="translate(-50%, -50%)"
           opacity={0}
@@ -154,36 +154,45 @@ export default function Hero() {
         </Box>
       </Box>
       <Container
-        maxW="1200px"
+        maxW={{ base: "95vw", md: "1200px" }}
+        px={{ base: 0, md: 4 }}
         position="relative"
         zIndex={3}
-        pt={{ base: 6, md: 0 }}
+        pt={{ base: 3, md: 0 }}
       >
-        <VStack spacing={8} textAlign="center" color="white">
+        <VStack spacing={{ base: 5, md: 8 }} textAlign="center" color="white">
           <Heading
-            size="2xl"
             fontWeight="800"
             lineHeight="1.1"
             letterSpacing="-0.02em"
+            fontSize={{ base: "1.85rem", sm: "2.2rem", md: "3.5rem", lg: "4rem" }}
           >
             Detailing Auto de{" "}
             <Text as="span" color="silver.400">
               Elită
             </Text>
           </Heading>
-          <Text fontSize="1.25rem" color="rgba(255, 255, 255, 0.9)" maxW="800px">
+          <Text
+            fontSize={{ base: "0.95rem", md: "1.25rem" }}
+            color="rgba(255, 255, 255, 0.9)"
+            maxW="800px"
+          >
             Transformăm mașinile tale în opere de artă cu atenție la detalii și pasiune pentru perfecțiune
           </Text>
-          <HStack spacing={4} flexWrap="wrap" justify="center">
+          <HStack spacing={{ base: 3, md: 4 }} flexWrap="wrap" justify="center">
             <Button
-              size="lg"
+              size={{ base: "sm", md: "md", lg: "lg" }}
+              px={{ base: 6, md: 8 }}
+              py={{ base: 3, md: 4 }}
               colorScheme="brand"
               onClick={createNavHandler(ROUTES.contact)}
             >
               Rezervă Acum
             </Button>
             <Button
-              size="lg"
+              size={{ base: "sm", md: "md", lg: "lg" }}
+              px={{ base: 6, md: 8 }}
+              py={{ base: 3, md: 4 }}
               variant="hero"
               onClick={createNavHandler(ROUTES.services)}
             >
