@@ -1,21 +1,27 @@
 "use client";
 
-import { IconButton, Tooltip } from "@chakra-ui/react";
+import { Box, IconButton } from "@chakra-ui/react";
 import { CONTACT_INFO } from "../../constants/contact";
+import { useState } from "react";
+import WhatsAppTooltip from "./WhatsAppTooltip";
 
 export default function WhatsAppButton() {
   // Format: +40732893053 (Romania country code +40, then number without leading 0)
   const phoneNumber = CONTACT_INFO.phone.value.replace(/\s/g, "");
   const whatsappUrl = `https://wa.me/${phoneNumber}`;
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Tooltip label="Contactează-ne pe WhatsApp" placement="left" hasArrow>
+    <Box position="fixed" bottom={8} right={8} zIndex={999}>
+      {isOpen && <WhatsAppTooltip>Contactează‑ne{"\n"}pe WhatsApp</WhatsAppTooltip>}
       <IconButton
         as="a"
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp"
+        onMouseEnter={() => setIsOpen(true)}
+        onMouseLeave={() => setIsOpen(false)}
         icon={
           <svg
             width="24"
@@ -32,10 +38,6 @@ export default function WhatsAppButton() {
         color="white"
         size="lg"
         borderRadius="full"
-        position="fixed"
-        bottom={8}
-        right={8}
-        zIndex={999}
         boxShadow="0 4px 20px rgba(37, 211, 102, 0.4)"
         _hover={{
           bg: "#20BA5A",
@@ -44,7 +46,6 @@ export default function WhatsAppButton() {
         }}
         transition="all 0.3s ease"
       />
-    </Tooltip>
+    </Box>
   );
 }
-
