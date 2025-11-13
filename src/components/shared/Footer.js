@@ -1,8 +1,8 @@
 import { Box, Container, VStack, HStack, Text, Link } from "@chakra-ui/react";
 import NextLink from "next/link";
-import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 import Logo from "./Logo";
-import { SOCIAL_LINKS } from "../../constants/social";
+import TikTokIcon from "../icons/TikTokIcon";
 
 export default function Footer() {
   return (
@@ -43,11 +43,10 @@ export default function Footer() {
               href="https://www.tiktok.com/"
               target="_blank"
               rel="noopener noreferrer"
-              color="#25F4EE"
-              _hover={{ color: "#A5FFF7" }}
-              transition="color 0.3s ease"
+              _hover={{ filter: "brightness(1.2)" }}
+              transition="filter 0.3s ease"
             >
-              <FaTiktok size={28} />
+              <TikTokIcon size="28px" />
             </Link>
           </HStack>
           <HStack spacing={6} flexWrap="wrap" justify="center">
@@ -92,4 +91,3 @@ export default function Footer() {
     </Box>
   );
 }
-

@@ -9,7 +9,6 @@ import ProcessSection from "../components/sections/ProcessSection";
 import TestimonialsSection from "../components/sections/TestimonialsSection";
 import FAQSection from "../components/sections/FAQSection";
 import ContactSection from "../components/sections/ContactSection";
-import MapSection from "../components/sections/MapSection";
 import Footer from "../components/shared/Footer";
 import WhatsAppButton from "../components/shared/WhatsAppButton";
 import GDPRConsent from "../components/shared/GDPRConsent";
@@ -28,7 +27,6 @@ export default function Home() {
         <TestimonialsSection />
         <FAQSection />
         <ContactSection />
-        <MapSection />
         <Footer />
         <WhatsAppButton />
         <GDPRConsent />

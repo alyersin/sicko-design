@@ -5,6 +5,8 @@ import { keyframes } from "@emotion/react";
 import { ROUTES } from "../../constants/routes";
 import { useSmoothNavigation } from "../../hooks/useSmoothNavigation";
 
+const HERO_VIDEO_SRC = "/assets/20251113_1135_Remix Video_remix_01k9y91y24er0tsrdbzwj4dp00.mp4";
+
 const zoomInFromDepth = keyframes`
   0% {
     transform: translate(-50%, -50%) scale(0.25);
@@ -149,8 +151,18 @@ export default function Hero() {
             animationDelay: "5.3s",
           }}
         >
-          {/* Replace with actual video embed */}
-          <Box width="100%" height="100%" bg="black" />
+          <Box
+            as="video"
+            src={HERO_VIDEO_SRC}
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls={false}
+            objectFit="cover"
+            width="100%"
+            height="100%"
+          />
         </Box>
       </Box>
       <Container

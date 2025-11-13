@@ -62,7 +62,7 @@ export default function ContactSection() {
           </VStack>
 
           <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={16} width="100%">
-            <VStack spacing={8} align="flex-start">
+            <VStack spacing={8} align="flex-start" width="100%">
               {Object.values(CONTACT_INFO).map((info, index) => (
                 <HStack key={index} spacing={4} align="flex-start">
                   <Text fontSize="2rem">{info.icon}</Text>
@@ -84,6 +84,24 @@ export default function ContactSection() {
                   </VStack>
                 </HStack>
               ))}
+              <Box
+                width="100%"
+                borderRadius="xl"
+                overflow="hidden"
+                boxShadow="0 4px 20px rgba(0, 0, 0, 0.1)"
+                height={{ base: "260px", md: "220px" }}
+              >
+                <iframe
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.5!2d28.6584!3d44.1598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDTCsDA5JzM1LjMiTiAyOMKwMzknMzAuMiJF!5e0!3m2!1sen!2sro!4v1234567890"
+                  title="Sicko Design Location"
+                />
+              </Box>
             </VStack>
 
             <Box as="form" onSubmit={handleSubmit} width="100%">
@@ -187,4 +205,3 @@ export default function ContactSection() {
     </Box>
   );
 }
-

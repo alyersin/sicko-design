@@ -9,29 +9,28 @@ import { CalculatorIcon, ZapIcon, DiamondIcon, TargetIcon, InfoIcon, ClipboardIc
 
 export default function CalculatorPage() {
   return (
-    <Box minH="100vh" bgGradient="linear(135deg, brand.50 0%, white 50%, brand.50 100%)" position="relative" overflow="hidden">
-      {/* Background decorative elements */}
+    <Box
+      minH="100vh"
+      position="relative"
+      overflow="hidden"
+      bgGradient="linear(135deg, rgba(4,18,48,1) 0%, rgba(0,102,204,0.65) 50%, rgba(8,17,26,1) 100%)"
+    >
       <Box
         position="absolute"
-        top="-100px"
-        right="-100px"
-        width="400px"
-        height="400px"
-        borderRadius="full"
-        bgGradient="linear(135deg, brand.200, brand.300)"
-        opacity={0.1}
-        filter="blur(60px)"
+        inset={0}
+        opacity={0.4}
+        backgroundImage="radial-gradient(circle at 20% 20%, rgba(255,255,255,0.12) 0, transparent 45%), radial-gradient(circle at 80% 0%, rgba(255,255,255,0.08) 0, transparent 35%), radial-gradient(circle at 60% 80%, rgba(255,255,255,0.1) 0, transparent 40%)"
+        pointerEvents="none"
+        zIndex={0}
       />
       <Box
         position="absolute"
-        bottom="-150px"
-        left="-150px"
-        width="500px"
-        height="500px"
-        borderRadius="full"
-        bgGradient="linear(135deg, brand.300, brand.400)"
-        opacity={0.1}
-        filter="blur(80px)"
+        inset={0}
+        opacity={0.25}
+        bg="linear-gradient(120deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 60%)"
+        mixBlendMode="screen"
+        pointerEvents="none"
+        zIndex={0}
       />
 
       <Header />
@@ -42,9 +41,9 @@ export default function CalculatorPage() {
             <VStack spacing={{ base: 4, md: 6 }} textAlign="center" maxW="700px" mx="auto">
               <Box
                 p={{ base: 3, md: 4 }}
-                bgGradient="linear(135deg, brand.400, brand.600)"
+                bgGradient="linear(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05))"
                 borderRadius="2xl"
-                boxShadow="0 8px 30px rgba(0, 102, 204, 0.3)"
+                boxShadow="0 12px 35px rgba(3, 15, 28, 0.4)"
                 display="inline-flex"
                 alignItems="center"
                 justifyContent="center"
@@ -54,17 +53,17 @@ export default function CalculatorPage() {
               </Box>
               <Heading
                 fontSize={{ base: "2.25rem", md: "3rem" }}
-                bgGradient="linear(135deg, brand.600, brand.500)"
-                bgClip="text"
+                color="white"
                 fontWeight="800"
                 letterSpacing="-0.02em"
                 lineHeight="1.1"
+                textShadow="0 10px 35px rgba(0,0,0,0.45)"
               >
                 Calculator Preț Detailing
               </Heading>
               <Text
                 fontSize={{ base: "md", md: "xl" }}
-                color="text.secondary"
+                color="rgba(255,255,255,0.86)"
                 lineHeight={{ base: "1.6", md: "1.8" }}
                 fontWeight="500"
               >
@@ -75,16 +74,15 @@ export default function CalculatorPage() {
                 <Box
                   px={{ base: 3, md: 4 }}
                   py={{ base: 2, md: 2 }}
-                  bg="white"
+                  bg="rgba(255,255,255,0.12)"
                   borderRadius="full"
-                  border="2px solid"
-                  borderColor="brand.200"
-                  boxShadow="0 2px 10px rgba(0, 102, 204, 0.1)"
+                  border="1px solid rgba(255,255,255,0.25)"
+                  boxShadow="0 10px 30px rgba(0,0,0,0.2)"
                   minW={{ base: "100%", sm: "auto" }}
                 >
                   <HStack spacing={2}>
-                    <Icon as={ZapIcon} w={4} h={4} color="brand.600" />
-                    <Text fontSize="sm" fontWeight="600" color="brand.600" textAlign="center">
+                    <Icon as={ZapIcon} w={4} h={4} color="white" />
+                    <Text fontSize="sm" fontWeight="600" color="white" textAlign="center">
                       Calcul Rapid
                     </Text>
                   </HStack>
@@ -92,16 +90,15 @@ export default function CalculatorPage() {
                 <Box
                   px={{ base: 3, md: 4 }}
                   py={{ base: 2, md: 2 }}
-                  bg="white"
+                  bg="rgba(255,255,255,0.12)"
                   borderRadius="full"
-                  border="2px solid"
-                  borderColor="brand.200"
-                  boxShadow="0 2px 10px rgba(0, 102, 204, 0.1)"
+                  border="1px solid rgba(255,255,255,0.25)"
+                  boxShadow="0 10px 30px rgba(0,0,0,0.2)"
                   minW={{ base: "100%", sm: "auto" }}
                 >
                   <HStack spacing={2}>
-                    <Icon as={DiamondIcon} w={4} h={4} color="brand.600" />
-                    <Text fontSize="sm" fontWeight="600" color="brand.600" textAlign="center">
+                    <Icon as={DiamondIcon} w={4} h={4} color="white" />
+                    <Text fontSize="sm" fontWeight="600" color="white" textAlign="center">
                       Prețuri Transparente
                     </Text>
                   </HStack>
@@ -109,16 +106,15 @@ export default function CalculatorPage() {
                 <Box
                   px={{ base: 3, md: 4 }}
                   py={{ base: 2, md: 2 }}
-                  bg="white"
+                  bg="rgba(255,255,255,0.12)"
                   borderRadius="full"
-                  border="2px solid"
-                  borderColor="brand.200"
-                  boxShadow="0 2px 10px rgba(0, 102, 204, 0.1)"
+                  border="1px solid rgba(255,255,255,0.25)"
+                  boxShadow="0 10px 30px rgba(0,0,0,0.2)"
                   minW={{ base: "100%", sm: "auto" }}
                 >
                   <HStack spacing={2}>
-                    <Icon as={TargetIcon} w={4} h={4} color="brand.600" />
-                    <Text fontSize="sm" fontWeight="600" color="brand.600" textAlign="center">
+                    <Icon as={TargetIcon} w={4} h={4} color="white" />
+                    <Text fontSize="sm" fontWeight="600" color="white" textAlign="center">
                       Estimare Precisă
                     </Text>
                   </HStack>
@@ -127,18 +123,40 @@ export default function CalculatorPage() {
             </VStack>
 
             {/* Calculator Component */}
-            <Box width="100%" maxW="900px">
-              <PriceCalculator />
+            <Box
+              width="100%"
+              maxW="980px"
+              borderRadius="3xl"
+              p={{ base: 3, md: 5 }}
+              bgGradient="linear(145deg, rgba(12,36,74,0.75), rgba(21,70,121,0.75))"
+              border="1px solid rgba(112,181,255,0.2)"
+              boxShadow="0 35px 110px rgba(0,0,0,0.55)"
+              backdropFilter="blur(10px)"
+            >
+              <Box
+                bgGradient="linear(145deg, rgba(17,39,71,0.95), rgba(24,58,106,0.9))"
+                borderRadius="2xl"
+                boxShadow="inset 0 1px 0 rgba(255,255,255,0.15)"
+                overflow="hidden"
+              >
+                <Box
+                  bgGradient="linear(180deg, rgba(17,39,71,0.93) 0%, rgba(18,46,90,0.93) 100%)"
+                  borderRadius="2xl"
+                  px={{ base: 3, md: 5 }}
+                  py={{ base: 3, md: 5 }}
+                >
+                  <PriceCalculator />
+                </Box>
+              </Box>
             </Box>
 
             {/* Additional Info Section */}
             <Box
               p={{ base: 5, md: 8 }}
-              bg="white"
+              bg="rgba(255,255,255,0.92)"
               borderRadius="2xl"
-              boxShadow="0 4px 20px rgba(0, 0, 0, 0.08)"
-              border="1px solid"
-              borderColor="border.subtle"
+              boxShadow="0 20px 60px rgba(0, 0, 0, 0.15)"
+              border="1px solid rgba(255,255,255,0.6)"
               width="100%"
             >
               <VStack spacing={4} align="flex-start">
@@ -179,7 +197,7 @@ export default function CalculatorPage() {
 
             {/* CTA Section */}
             <VStack spacing={4}>
-              <Text fontSize={{ base: "md", md: "lg" }} color="text.secondary" fontWeight="500" textAlign="center">
+              <Text fontSize={{ base: "md", md: "lg" }} color="rgba(255,255,255,0.9)" fontWeight="500" textAlign="center">
                 Ai întrebări sau preferi să discutăm direct?
               </Text>
               <HStack spacing={4} flexWrap="wrap" justify="center" width="100%">
@@ -188,12 +206,12 @@ export default function CalculatorPage() {
                   href="/#contact"
                   colorScheme="brand"
                   size={{ base: "md", md: "lg" }}
-                  bgGradient="linear(to-r, brand.500, brand.600)"
-                  boxShadow="0 4px 15px rgba(0, 102, 204, 0.4)"
+                  bgGradient="linear(135deg, #0091ff, #5ad7ff)"
+                  boxShadow="0 20px 45px rgba(0, 145, 255, 0.35)"
                   _hover={{
-                    bgGradient: "linear(to-r, brand.600, brand.700)",
-                    transform: "translateY(-2px)",
-                    boxShadow: "0 6px 20px rgba(0, 102, 204, 0.5)",
+                    bgGradient: "linear(135deg, #5ad7ff, #0091ff)",
+                    transform: "translateY(-3px) scale(1.01)",
+                    boxShadow: "0 30px 60px rgba(0, 145, 255, 0.4)",
                   }}
                   style={{ textDecoration: "none" }}
                 >
@@ -208,9 +226,13 @@ export default function CalculatorPage() {
                   variant="outline"
                   size={{ base: "md", md: "lg" }}
                   borderWidth="2px"
+                  borderColor="rgba(255,255,255,0.6)"
+                  color="white"
+                  boxShadow="0 10px 25px rgba(0,0,0,0.35)"
                   _hover={{
-                    bg: "brand.50",
-                    borderColor: "brand.500",
+                    bg: "rgba(255,255,255,0.12)",
+                    borderColor: "white",
+                    transform: "translateY(-3px)",
                   }}
                   style={{ textDecoration: "none" }}
                 >
@@ -228,4 +250,3 @@ export default function CalculatorPage() {
     </Box>
   );
 }
-

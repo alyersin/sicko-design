@@ -15,10 +15,15 @@ import {
   DrawerCloseButton,
   useDisclosure,
   VStack,
+  Divider,
+  Text,
 } from "@chakra-ui/react";
 import { NAV_ITEMS } from "../../constants/navigation";
+import { SOCIAL_LINKS } from "../../constants/social";
 import HamburgerIcon from "../icons/HamburgerIcon";
 import { useSmoothNavigation } from "../../hooks/useSmoothNavigation";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import TikTokIcon from "../icons/TikTokIcon";
 
 const navLinkVariants = {
   desktop: {
@@ -81,6 +86,42 @@ const DrawerLinks = ({ onNavigate }) => (
   </VStack>
 );
 
+const SOCIAL_ICONS = {
+  facebook: FaFacebookF,
+  instagram: FaInstagram,
+  tiktok: TikTokIcon,
+};
+
+const SOCIAL_COLORS = {
+  facebook: { base: "#1877F2", hover: "#99C2FF" },
+  instagram: { base: "#E1306C", hover: "#FF8AB4" },
+};
+
+const SocialLinks = ({ iconSize = "1.15rem", ...stackProps }) => (
+  <HStack spacing={3} {...stackProps}>
+    {SOCIAL_LINKS.map(({ id, href, label }) => {
+      const Icon = SOCIAL_ICONS[id];
+      if (!Icon) return null;
+      const colorSet = SOCIAL_COLORS[id];
+      return (
+        <Link
+          key={id}
+          href={href}
+          isExternal
+          aria-label={label}
+          color={colorSet?.base || "text.primary"}
+          _hover={{ color: colorSet?.hover || "brand.500" }}
+          transition="color 0.2s ease"
+        >
+          <Box fontSize={iconSize} lineHeight={0}>
+            <Icon size="1em" />
+          </Box>
+        </Link>
+      );
+    })}
+  </HStack>
+);
+
 export default function HeaderClient({ desktopLogo, drawerLogo }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -112,6 +153,8 @@ export default function HeaderClient({ desktopLogo, drawerLogo }) {
     navigate(event, href);
   };
 
+  const shouldShowDesktopLinks = !mounted || !isMobile;
+
   return (
     <>
       <Box
@@ -127,16 +170,21 @@ export default function HeaderClient({ desktopLogo, drawerLogo }) {
         transition="all 0.3s ease"
         py={isScrolled ? 3 : 4}
       >
-        <Flex maxW="1200px" mx="auto" px={5} align="center" justify="space-between">
+        <Flex maxW="1200px" mx="auto" px={5} align="center" justify="space-between" columnGap={5}>
           {desktopLogo}
 
-          {!mounted ? (
+          {shouldShowDesktopLinks ? (
             <DesktopLinks onNavigate={handleNavClick} />
-          ) : isMobile ? (
-            <IconButton icon={<HamburgerIcon />} variant="ghost" onClick={onOpen} aria-label="Open menu" />
           ) : (
-            <DesktopLinks onNavigate={handleNavClick} />
+            <Box flex={1} />
           )}
+
+          <HStack spacing={4}>
+            <SocialLinks display={{ base: "none", md: "flex" }} />
+            {mounted && isMobile && (
+              <IconButton icon={<HamburgerIcon />} variant="ghost" onClick={onOpen} aria-label="Open menu" />
+            )}
+          </HStack>
         </Flex>
       </Box>
 
@@ -147,6 +195,11 @@ export default function HeaderClient({ desktopLogo, drawerLogo }) {
           <DrawerHeader>{drawerLogo}</DrawerHeader>
           <DrawerBody>
             <DrawerLinks onNavigate={handleNavClick} />
+            <Divider my={6} />
+            <Text fontSize="sm" mb={2} color="text.muted">
+              Urmărește-ne
+            </Text>
+            <SocialLinks spacing={5} iconSize="1.4rem" />
           </DrawerBody>
         </DrawerContent>
       </Drawer>

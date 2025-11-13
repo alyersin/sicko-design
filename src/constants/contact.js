@@ -1,9 +1,4 @@
 export const CONTACT_INFO = {
-  location: {
-    label: "Locație",
-    value: "Constanța, România",
-    icon: "📍",
-  },
   phone: {
     label: "Telefon",
     value: "+40 732 893 053",
@@ -22,6 +17,11 @@ export const CONTACT_INFO = {
     ],
     icon: "🕒",
   },
+  location: {
+    label: "Locație",
+    value: "Constanța, România",
+    icon: "📍",
+  },
 };
 
 export const FORM_PLACEHOLDERS = {
@@ -30,4 +30,3 @@ export const FORM_PLACEHOLDERS = {
   phone: "Telefon",
   message: "Mesajul tău",
 };
-
