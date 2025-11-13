@@ -29,7 +29,9 @@ const navLinkVariants = {
   desktop: {
     color: "text.primary",
     fontWeight: "500",
-    fontSize: "0.95rem",
+    fontSize: "0.84rem",
+    textTransform: "uppercase",
+    letterSpacing: "0.04em",
     position: "relative",
     _after: {
       content: '""',
@@ -47,8 +49,10 @@ const navLinkVariants = {
     },
   },
   drawer: {
-    fontSize: "1.1rem",
+    fontSize: "1rem",
     fontWeight: "500",
+    textTransform: "uppercase",
+    letterSpacing: "0.08em",
     py: 4,
     borderBottom: "1px solid",
     borderColor: "border.subtle",
