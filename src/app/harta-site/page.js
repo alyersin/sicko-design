@@ -3,6 +3,7 @@ import NextLink from "next/link";
 import Header from "../../components/shared/Header";
 import Footer from "../../components/shared/Footer";
 import WhatsAppButton from "../../components/shared/WhatsAppButton";
+import CookieSettingsButton from "../../components/shared/CookieSettingsButton";
 import GDPRConsent from "../../components/shared/GDPRConsent";
 
 const sitemapLinks = [
@@ -46,6 +47,7 @@ export default function SitemapPage() {
       </Box>
       <Footer />
       <WhatsAppButton />
+      <CookieSettingsButton />
       <GDPRConsent />
     </Box>
   );

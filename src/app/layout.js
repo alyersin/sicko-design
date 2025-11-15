@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
+import { GDPRProvider } from "../contexts/GDPRContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +23,9 @@ export default function RootLayout({ children }) {
     <html lang="ro">
       <body className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning={true}>
         <Providers>
-          {children}
+          <GDPRProvider>
+            {children}
+          </GDPRProvider>
         </Providers>
       </body>
     </html>

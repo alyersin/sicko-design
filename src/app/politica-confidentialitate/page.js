@@ -2,6 +2,7 @@ import { Box, Container, Heading, Text, Divider, VStack, List, ListItem } from "
 import Header from "../../components/shared/Header";
 import Footer from "../../components/shared/Footer";
 import WhatsAppButton from "../../components/shared/WhatsAppButton";
+import CookieSettingsButton from "../../components/shared/CookieSettingsButton";
 import GDPRConsent from "../../components/shared/GDPRConsent";
 
 const sections = [
@@ -84,6 +85,7 @@ export default function PrivacyPolicyPage() {
       </Box>
       <Footer />
       <WhatsAppButton />
+      <CookieSettingsButton />
       <GDPRConsent />
     </Box>
   );

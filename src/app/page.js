@@ -11,6 +11,7 @@ import FAQSection from "../components/sections/FAQSection";
 import ContactSection from "../components/sections/ContactSection";
 import Footer from "../components/shared/Footer";
 import WhatsAppButton from "../components/shared/WhatsAppButton";
+import CookieSettingsButton from "../components/shared/CookieSettingsButton";
 import GDPRConsent from "../components/shared/GDPRConsent";
 
 export default function Home() {
@@ -29,6 +30,7 @@ export default function Home() {
         <ContactSection />
         <Footer />
         <WhatsAppButton />
+        <CookieSettingsButton />
         <GDPRConsent />
       </Box>
     </Box>

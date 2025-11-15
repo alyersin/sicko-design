@@ -18,6 +18,7 @@ import {
 import NextLink from "next/link";
 import { CloseIcon } from "@chakra-ui/icons";
 import { CONTACT_INFO } from "../../constants/contact";
+import { useGDPR } from "../../contexts/GDPRContext";
 
 const STORAGE_KEY = "sicko_gdpr_preferences_v1";
 
@@ -64,18 +65,40 @@ const savePreferences = (prefs) => {
 };
 
 export default function GDPRConsent() {
-  const [isVisible, setIsVisible] = useState(false);
+  const { isVisible, setIsVisible, forceShow, setForceShow } = useGDPR();
   const [showDetails, setShowDetails] = useState(false);
   const [preferences, setPreferences] = useState(defaultPreferences);
 
   useEffect(() => {
     const stored = loadPreferences();
     if (stored) {
-      setPreferences((prev) => ({ ...prev, ...stored }));
+      const { timestamp, ...prefs } = stored;
+      setPreferences((prev) => ({ ...prev, ...prefs }));
+      // Don't auto-show if preferences exist (unless forced)
+      if (!forceShow) {
+        setIsVisible(false);
+      }
     } else {
+      // First visit - show banner
       setIsVisible(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // When forceShow changes, show the banner and load preferences
+  useEffect(() => {
+    if (forceShow) {
+      setIsVisible(true);
+      setShowDetails(true); // Auto-expand details when opened via button
+      // Load current preferences when forced to show
+      const stored = loadPreferences();
+      if (stored) {
+        const { timestamp, ...prefs } = stored;
+        setPreferences((prev) => ({ ...prev, ...prefs }));
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [forceShow]);
 
   const handleAcceptAll = () => {
     const updated = Object.keys(preferences).reduce((acc, key) => {
@@ -85,6 +108,7 @@ export default function GDPRConsent() {
     savePreferences(updated);
     setPreferences(updated);
     setIsVisible(false);
+    setForceShow(false);
   };
 
   const handleDecline = () => {
@@ -95,11 +119,18 @@ export default function GDPRConsent() {
     savePreferences(updated);
     setPreferences(updated);
     setIsVisible(false);
+    setForceShow(false);
   };
 
   const handleSave = () => {
     savePreferences(preferences);
     setIsVisible(false);
+    setForceShow(false);
+  };
+
+  const handleClose = () => {
+    setIsVisible(false);
+    setForceShow(false);
   };
 
   const handleToggle = (optionId) => {
@@ -199,7 +230,7 @@ export default function GDPRConsent() {
             variant="ghost"
             color="whiteAlpha.800"
             _hover={{ color: "white" }}
-            onClick={() => setIsVisible(false)}
+            onClick={handleClose}
           />
         </Flex>
       </Box>
